@@ -43,7 +43,19 @@ export default function ListBox({
                   <span className="text-tiny text-default-400">{`Video: ${item.hasVideo} | Audio: ${item.hasAudio}`}</span>
                 </div>
                 <Link href={item.url} target="_blank" title={title}>
-                  <CopyToClipboard text={String(title).replaceAll("?", "")}>
+                  <CopyToClipboard
+                    text={String(title)
+                      .replaceAll("/", " ")
+                      .replaceAll(`\\`, " ")
+                      .replaceAll(":", " ")
+                      .replaceAll("?", " ")
+                      .replaceAll("*", " ")
+                      .replaceAll(";", " ")
+                      .replaceAll("|", " ")
+                      .replaceAll(`"`, " ")
+                      .replaceAll(">", " ")
+                      .replaceAll("<", " ")}
+                  >
                     <Button>Download</Button>
                   </CopyToClipboard>
                 </Link>
